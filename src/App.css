@@ -1,3 +1,63 @@
 .App {
   text-align: center;
 }
+
+.rowJustify {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 10px 15px 15px 10px;
+  width: 250px;
+  height: 330px;
+  margin-bottom: 20px;
+  margin: 15px 15px 15px;
+}
+
+figure.blur3:hover * {
+  -webkit-filter: blur(5px);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='blur5'><feGaussianBlur in='SourceGraphic' stdDeviation='5' /></filter></svg>#blur5");
+  filter: blur(3px);
+  user-select: none;
+}
+
+figure.blur3::after{
+  content: "Hjghfgsfhajgbxgnnjqg";
+}
+
+.cardHeader {
+  margin-bottom: 25px;
+}
+
+/* .btn {
+  visibility: hidden;
+} */
+
+/* figure.blur3 .btn:hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  visibility: visible;
+} */
+
+/* .figure.blur3:after {
+  content: "Hjghfgsfhajgbxgnnjqg";
+  color: blue;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+} */

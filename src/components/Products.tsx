@@ -5,6 +5,7 @@ import { add } from "../store/basketSlice";
 import { ButtonBase } from "@material-ui/core";
 import Header, { Props } from "./Header";
 import Paper from "@material-ui/core/Paper";
+import { Container, Grid } from "@material-ui/core";
 
 const Products = (props: Props) => {
   const dispatch = useDispatch();
@@ -16,9 +17,32 @@ const Products = (props: Props) => {
       <div>
         <h2>All Products</h2>
       </div>
-      <div className="">
-        <Paper elevation={3}>hhhhh</Paper>
-      </div>
+      <Container fixed className="cardHeader">
+        <Grid
+          container
+          direction="row"
+          // justify="center"
+          // alignItems="center"
+        >
+          {products.map((product, ind) => {
+            return (
+              <figure className="blur3" key={product.id}>
+                <Paper elevation={3} className="card">
+                  <button className="btn" onClick={()=>dispatch(add(product))}>Button</button>
+                  <img src={product.imageUrl} width="200" height="200" />
+                  <figcaption>
+                    <div className="rowJustify">
+                      <p style={{ fontWeight: "bold" }}>{product.title}</p>
+                      <p style={{ fontWeight: "bold" }}>${product.price}</p>
+                    </div>
+                    {product.description}
+                  </figcaption>
+                </Paper>
+              </figure>
+            );
+          })}
+        </Grid>
+      </Container>
       {/* <ButtonBase
         focusRipple
       key={product.id}

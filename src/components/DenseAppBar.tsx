@@ -1,12 +1,15 @@
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import Button from "@material-ui/core/Button";
+import {
+  Toolbar,
+  Typography,
+  IconButton,
+  Button,
+  Badge,
+} from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -62,7 +65,9 @@ export default function DenseAppBar() {
             aria-label="shopping_cart"
             onClick={() => navigate("/basket")}
           >
-            <ShoppingCart />
+            <Badge badgeContent={0} color="secondary">
+              <ShoppingCart />
+            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>

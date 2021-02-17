@@ -10,10 +10,13 @@ export const basketSlice = createSlice({
         if (item.id !== action.payload.id) {
           return item;
         }
+        console.log(action);
         return {
           ...item,
           added: true,
-          quantity: item.total_quantity - 1,
+          quantity: item.quantity + 1,
+          // item.total_quantity -
+          // (item.total_quantity - item.quantity === 0 ? 1 : item.quantity),
         };
       });
     },
@@ -31,7 +34,7 @@ export const basketSlice = createSlice({
         }
         return {
           ...item,
-          quantity: item.total_quantity - 1,
+          quantity: item.quantity ? item.quantity + 1 : 0,
         };
       });
     },

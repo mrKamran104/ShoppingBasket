@@ -6,5 +6,6 @@ export interface ProductItem {
   total_quantity: number;
   imageUrl: string;
   added?: boolean;
-  quantity?: number;
+  quantity: number;
 }
+
