@@ -8,4 +8,3 @@ export interface ProductItem {
   added?: boolean;
   quantity: number;
 }
-

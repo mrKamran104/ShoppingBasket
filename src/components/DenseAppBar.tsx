@@ -11,6 +11,8 @@ import {
   Badge,
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { ProductItem } from "../interface/global";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function DenseAppBar() {
   const classes = useStyles();
   let navigate = useNavigate();
+  const products = useSelector((state: ProductItem[]) => state);
+  const totalProduct = products.filter((product) => product.added).length;
 
   return (
     <div className={classes.root}>
@@ -50,7 +54,7 @@ export default function DenseAppBar() {
             className={classes.title}
             onClick={() => navigate("/")}
           >
-            Shopping
+            Online Shop
           </Typography>
           <Button color="inherit" onClick={() => navigate("/")}>
             Home
@@ -65,7 +69,7 @@ export default function DenseAppBar() {
             aria-label="shopping_cart"
             onClick={() => navigate("/basket")}
           >
-            <Badge badgeContent={0} color="secondary">
+            <Badge badgeContent={totalProduct} color="secondary">
               <ShoppingCart />
             </Badge>
           </IconButton>

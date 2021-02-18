@@ -9,14 +9,14 @@ export const basketSlice = createSlice({
       return state.map((item) => {
         if (item.id !== action.payload.id) {
           return item;
+        } else if (item.added) {
+          return item;
         }
-        console.log(action);
+        // console.log(action);
         return {
           ...item,
           added: true,
           quantity: item.quantity + 1,
-          // item.total_quantity -
-          // (item.total_quantity - item.quantity === 0 ? 1 : item.quantity),
         };
       });
     },
@@ -25,29 +25,11 @@ export const basketSlice = createSlice({
       return state.map((item) => {
         if (item.id !== action.payload.id) {
           return item;
-        } else if (item.total_quantity <= 1) {
-          return {
-            ...item,
-            quantity: 0,
-            added: false,
-          };
         }
         return {
           ...item,
-          quantity: item.quantity ? item.quantity + 1 : 0,
-        };
-      });
-    },
-
-    clear: (state, action) => {
-      return state.map((item) => {
-        if (item.id !== action.payload.id) {
-          return item;
-        }
-        return {
-          ...item,
-          quantity: 0,
           added: false,
+          quantity: 0,
         };
       });
     },
@@ -56,14 +38,30 @@ export const basketSlice = createSlice({
       return state.map((item) => {
         if (item.id !== action.payload.id) {
           return item;
+        } else if (item.quantity === item.total_quantity) {
+          return item;
         }
         return {
           ...item,
-          quantity: item.total_quantity + 1,
+          quantity: item.quantity + 1,
+        };
+      });
+    },
+
+    dec: (state, action) => {
+      return state.map((item) => {
+        if (item.id !== action.payload.id) {
+          return item;
+        } else if (item.quantity === 1) {
+          return item;
+        }
+        return {
+          ...item,
+          quantity: item.quantity - 1,
         };
       });
     },
   },
 });
 
-export const { add, remove, clear, inc } = basketSlice.actions;
+export const { add, remove, inc, dec } = basketSlice.actions;
