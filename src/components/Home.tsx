@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Header, { Props } from "./Header";
 
 const Home = (props: Props) => {
-  let navigate = useNavigate();
   return (
     <div>
       <Header {...props} />
